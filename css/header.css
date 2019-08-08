@@ -1,0 +1,32 @@
+.header {
+    background-color: rgb(220, 220, 220);
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.page-logo {
+    height: 60px;
+    padding: 10px;
+}
+
+.menu-link {
+    text-decoration: none;
+    color: rgb(100, 100, 100);
+    padding: 10px;
+    display: inline-block;
+    transition: color 0.5s;
+}
+
+.menu-link:hover {
+    color: rgb(50, 50, 50);
+}
+
+@media all and (max-width: 768px) {
+    .header {
+        justify-content: center;
+        flex-direction: column;
+    }
+}

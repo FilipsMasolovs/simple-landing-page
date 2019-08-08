@@ -1,0 +1,31 @@
+.footer {
+    background-color: rgb(220, 220, 220);
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-navigation {
+    padding: 10px;
+}
+
+.copyright {
+    padding: 0 20px 0 20px;
+}
+
+@media all and (max-width: 768px) {
+    .footer-container {
+        align-items: flex-end;
+        flex-direction: column;
+        text-align: right;
+    }
+    .copyright {
+        padding: 0 20px 20px 20px;
+    }
+}
