@@ -3,12 +3,14 @@
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .page-logo {
-    height: 60px;
+    width: 100%;
+    max-width: 300px;
     padding: 10px;
 }
 
@@ -24,9 +26,9 @@
     color: rgb(50, 50, 50);
 }
 
-@media all and (max-width: 768px) {
+@media all and (min-width: 768px) {
     .header {
-        justify-content: center;
-        flex-direction: column;
+        justify-content: space-between;
+        flex-direction: row;
     }
 }
