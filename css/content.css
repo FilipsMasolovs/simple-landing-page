@@ -53,6 +53,7 @@
     background-color: rgb(242, 196, 14);
     transition: background-color 0.5s;
     cursor: pointer;
+    outline: none;
 }
 
 .input-submit:hover {
@@ -198,6 +199,98 @@
 
 .product-select:hover {
     background-color: rgb(209, 170, 12);
+}
+
+.contact-us {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 480px;
+}
+
+.contact-name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 10px;
+}
+
+.contact-email {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 10px;
+}
+
+.contact-message {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 10px;
+    height: 150px;
+}
+
+.contact-message input {
+    height: 150px;
+}
+
+.contact-submit {
+    margin: 5px 0 5px 0;
+    padding: 10px;
+    border: 0;
+    width: 70%;
+    font-size: 18px;
+    background-color: rgb(242, 196, 14);
+    transition: background-color 0.5s;
+    cursor: pointer;
+    outline: none;
+    align-self: flex-end;
+}
+
+.contact-submit:hover {
+    background-color: rgb(209, 170, 12);
+}
+
+.contact-form input:focus~.floating-label,
+input:not(:focus):valid~.floating-label {
+    bottom: 17px;
+    left: -9px;
+    font-size: 10px;
+    opacity: 1;
+}
+
+.floating-label-parent {
+    position: absolute;
+    font-size: 18px;
+    padding: 10px;
+    outline: none;
+    width: 100%;
+    max-width: 480px;
+}
+
+.floating-label {
+    position: relative;
+    pointer-events: none;
+    font-size: 18px;
+    padding: 10px;
+    transition: 0.2s ease all;
+}
+
+.wrong {
+    border: 1px red solid;
 }
 
 @media all and (min-width: 768px) {
