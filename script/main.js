@@ -1,52 +1,65 @@
 (function() {
-
-    const contactName = document.getElementById('contact-name-input');
-    const contactEmail = document.getElementById('contact-email-input');
-    const contactMessage = document.getElementById('contact-message-input');
-
+    const inputElements = document.querySelectorAll('.floating-label-parent');
     const comment = document.getElementById('comment');
 
     const submitMessageButton = document.getElementById('contact-submit');
     submitMessageButton.addEventListener('click', handleSubmitMessage);
-    document.addEventListener("keyup", function() {
-        if (event.keyCode == 13) {
-            handleSubmitMessage()
-        }
-    })
 
-    function handleSubmitMessage() {
+    function validate() {
+        let validationData = {};
+        const emailRegExp = /\S+@\S+\.\S+/;
 
-        const contactNameValue = contactName.value;
-        const contactEmailValue = contactEmail.value;
-        const contactMessageValue = contactMessage.value;
+        // let nameInput = inputElements[0];
+        // let emailInput = inputElements[1];
+        // let textInput = inputElements[2];
 
-        if (contactNameValue) {
-            if (contactEmailValue) {
-                if (contactEmailValue) {
-                    if (contactMessageValue) {
-                        contactMessage.classList.remove('wrong');
-                        comment.insertAdjacentHTML('beforeend', `ALL IS OK BRO!<br>`)
-                    } else {
-                        contactEmail.classList.remove('wrong');
-                        contactMessage.classList.add('wrong');
-                        comment.insertAdjacentHTML('beforeend', `Komentārs nevar būt tukšs!<br>`)
-                    }
-                } else {
-                    contactEmail.classList.add('wrong');
-                    comment.insertAdjacentHTML('beforeend', `Nepareizs e-pasts!<br>`)
-                }
-            } else {
-                contactName.classList.remove('wrong');
-                contactEmail.classList.add('wrong');
-                comment.insertAdjacentHTML('beforeend', `E-pasts nevar būt tukšs!<br>`)
+        // if (!nameInput.value) {
+        //     validationData[nameInput.id] = "nevar būt tukšs!";
+        // }
+        // if (!emailInput.value) {
+        //     validationData[emailInput.id] = "nevar būt tukšs!";
+        // }
+        // if (!textInput.value) {
+        //     validationData[textInput.id] = "nevar būt tukšs!";
+        // }
+
+        // if (emailInput.value && !emailRegExp.test(emailInput.value)) {
+        //     validationData[emailInput.id] = "ir nepareizs!";
+        // }
+
+        inputElements.forEach(function(item, index) {
+            if (!item.value) {
+                validationData[item.id] = "nevar būt tukšs!";
+            } else if (item.id === 'contact-email-input' && !emailRegExp.test(item.value)) {
+                validationData[item.id] = "ir nepareizs!";
             }
-        } else {
-            contactName.classList.add('wrong');
-            comment.insertAdjacentHTML('beforeend', `Vārds, uzvārds nevar būt tukšs!<br>`)
-        }
-
+        });
+        return validationData
     }
 
-
+    function handleSubmitMessage() {
+        comment.innerHTML = "";
+        inputElements.forEach(function(item) {
+            item.classList.remove('wrong');
+        });
+        const validationData = validate();
+        console.log(validationData)
+        if (Object.keys(validationData).length === 0) {
+            comment.innerHTML = "Jūsu ziņa tika veiksmīgi nosūtīta!";
+            comment.classList.remove('comment--wrong');
+            comment.classList.add('comment--right');
+            inputElements.forEach(function(item) {
+                item.value = "";
+            });
+        } else {
+            Object.keys(validationData).forEach(function(item) {
+                const wrong = document.getElementById(item);
+                wrong.classList.add('wrong');
+                comment.classList.remove('comment--right');
+                comment.classList.add('comment--wrong');
+                comment.insertAdjacentHTML('beforeend', `${wrong.dataset.inputType} ${validationData[item]}<br>`);
+            });
+        };
+    }
 
 }());

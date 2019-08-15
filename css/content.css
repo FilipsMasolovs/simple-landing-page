@@ -224,6 +224,7 @@
     align-items: center;
     width: 100%;
     margin: 10px;
+    position: relative;
 }
 
 .contact-email {
@@ -232,6 +233,7 @@
     align-items: center;
     width: 100%;
     margin: 10px;
+    position: relative;
 }
 
 .contact-message {
@@ -241,9 +243,10 @@
     width: 100%;
     margin: 10px;
     height: 150px;
+    position: relative;
 }
 
-.contact-message input {
+.contact-message .floating-label-parent {
     height: 150px;
 }
 
@@ -251,46 +254,73 @@
     margin: 5px 0 5px 0;
     padding: 10px;
     border: 0;
-    width: 70%;
+    width: 50%;
+    max-width: 240px;
     font-size: 18px;
     background-color: rgb(242, 196, 14);
     transition: background-color 0.5s;
     cursor: pointer;
     outline: none;
-    align-self: flex-end;
+    align-self: center;
 }
 
 .contact-submit:hover {
     background-color: rgb(209, 170, 12);
 }
 
-.contact-form input:focus~.floating-label,
-input:not(:focus):valid~.floating-label {
-    bottom: 17px;
-    left: -9px;
+.floating-label-parent:focus~.floating-label,
+.floating-label-parent:not(:focus):valid~.floating-label {
+    top: -16px;
+    left: 2px;
     font-size: 10px;
     opacity: 1;
 }
 
 .floating-label-parent {
-    position: absolute;
     font-size: 18px;
     padding: 10px;
     outline: none;
     width: 100%;
     max-width: 480px;
+    border: 1px black solid;
 }
 
 .floating-label {
-    position: relative;
+    position: absolute;
     pointer-events: none;
     font-size: 18px;
-    padding: 10px;
     transition: 0.2s ease all;
+    align-self: baseline;
+    top: 10px;
+    left: 10px;
 }
 
 .wrong {
     border: 1px red solid;
+}
+
+.comment--wrong {
+    color: #D8000C;
+    background-color: #FFD2D2;
+    width: 100%;
+    max-width: 480px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.comment--right {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    width: 100%;
+    max-width: 480px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.comment--right:before {
+    font: normal normal normal 14px/1 FontAwesome;
+    content: "\f00c";
+    padding-right: 5px;
 }
 
 @media all and (min-width: 768px) {
